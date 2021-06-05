@@ -18339,6 +18339,23 @@
 
 					console.error( 'WebGLProgram: shader error: ', gl.getError(), '35715', gl.getProgramParameter( program, 35715 ), 'gl.getProgramInfoLog', programLog, vertexErrors, fragmentErrors );
 
+				} else {
+
+					var err = "Shader ERROR: " + (gl.getError());
+					var status = "Status: " + (gl.getProgramParameter( program, 35715 ));
+					var prgmInfo = "Program info:\r\n" + programLog + "\r\n" + vertexErrors + "\r\n" + fragmentErrors;
+
+					if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
+
+						fragmentErrors = fragmentErrors + "\r\n" + err + "\r\n" + status + "\r\n" + prgmInfo;
+
+					} else {
+
+						fragmentErrors = err + "\r\n" + status + "\r\n" + prgmInfo;
+
+					}
+					fragmentLog += fragmentErrors;
+
 				}
 
 			} else if ( programLog !== '' ) {
@@ -18346,6 +18363,20 @@
 				if ( renderer.debug.consoleLogShaderErrors ) {
 
 					console.warn( 'WebGLProgram: gl.getProgramInfoLog()', programLog );
+
+				} else {
+
+					var prgmInfo$1 = "WARNING: " + programLog;
+					if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
+
+						fragmentErrors = fragmentErrors + "\r\n" + prgmInfo$1;
+
+					} else {
+
+						fragmentErrors = "" + prgmInfo$1;
+
+					}
+					fragmentLog += fragmentErrors;
 
 				}
 

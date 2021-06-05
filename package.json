@@ -1,6 +1,6 @@
 {
   "name": "mgzthree",
-  "version": "0.115.1",
+  "version": "0.115.3",
   "description": "JavaScript 3D library",
   "main": "build/three.js",
   "module": "build/three.module.js",

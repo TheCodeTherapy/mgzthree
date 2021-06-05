@@ -774,6 +774,7 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 					fragmentErrors = `${err}\r\n${status}\r\n${prgmInfo}`;
 
 				}
+				fragmentLog += fragmentErrors;
 
 			}
 
@@ -795,6 +796,7 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 					fragmentErrors = `${prgmInfo}`;
 
 				}
+				fragmentLog += fragmentErrors;
 
 			}
 
