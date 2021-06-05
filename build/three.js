@@ -18359,7 +18359,7 @@
 
 				}
 
-			} else if ( vertexLog === '' || fragmentLog === '' ) {
+			} else if ( vertexLog === '' && fragmentLog === '' && programLog === '' ) {
 
 				haveDiagnostics = false;
 

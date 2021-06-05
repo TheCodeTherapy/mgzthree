@@ -18346,7 +18346,7 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 
 			}
 
-		} else if ( vertexLog === '' || fragmentLog === '' ) {
+		} else if ( vertexLog === '' && fragmentLog === '' && programLog === '' ) {
 
 			haveDiagnostics = false;
 
