@@ -759,6 +759,22 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 
 				console.error( 'WebGLProgram: shader error: ', gl.getError(), 'gl.VALIDATE_STATUS', gl.getProgramParameter( program, gl.VALIDATE_STATUS ), 'gl.getProgramInfoLog', programLog, vertexErrors, fragmentErrors );
 
+			} else {
+
+				const err = `Shader ERROR: ${gl.getError()}`;
+				const status = `Status: ${gl.getProgramParameter( program, gl.VALIDATE_STATUS )}`;
+				const prgmInfo = `Program info:\r\n${programLog}\r\n${vertexErrors}\r\n${fragmentErrors}`;
+
+				if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
+
+					fragmentErrors = `${fragmentErrors}\r\n${err}\r\n${status}\r\n${prgmInfo}`;
+
+				} else {
+
+					fragmentErrors = `${err}\r\n${status}\r\n${prgmInfo}`;
+
+				}
+
 			}
 
 		} else if ( programLog !== '' ) {
@@ -766,6 +782,19 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 			if ( renderer.debug.consoleLogShaderErrors ) {
 
 				console.warn( 'WebGLProgram: gl.getProgramInfoLog()', programLog );
+
+			} else {
+
+				const prgmInfo = `WARNING: ${programLog}`;
+				if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
+
+					fragmentErrors = `${fragmentErrors}\r\n${prgmInfo}`;
+
+				} else {
+
+					fragmentErrors = `${prgmInfo}`;
+
+				}
 
 			}
 
