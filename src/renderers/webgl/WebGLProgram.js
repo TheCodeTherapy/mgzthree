@@ -761,20 +761,9 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 
 			} else {
 
-				const err = `Shader ERROR: ${gl.getError()}`;
-				const status = `Status: ${gl.getProgramParameter( program, gl.VALIDATE_STATUS )}`;
-				const prgmInfo = `Program info:\r\n${programLog}\r\n${vertexErrors}\r\n${fragmentErrors}`;
-
-				if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
-
-					fragmentErrors = `${fragmentErrors}\r\n${err}\r\n${status}\r\n${prgmInfo}`;
-
-				} else {
-
-					fragmentErrors = `${err}\r\n${status}\r\n${prgmInfo}`;
-
-				}
-				fragmentLog += fragmentErrors;
+				fragmentLog = `SHADER ERROR: ${gl.getError()}\n\r`;
+				fragmentLog += `VALIDATE STATUS: ${gl.getProgramParameter( program, gl.VALIDATE_STATUS )}\n\r`;
+				fragmentLog += `PROGRAM INFO LOG:\r\n${programLog}\n\r${vertexErrors}\n\r${fragmentErrors}`;
 
 			}
 
@@ -786,17 +775,7 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 
 			} else {
 
-				const prgmInfo = `WARNING: ${programLog}`;
-				if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
-
-					fragmentErrors = `${fragmentErrors}\r\n${prgmInfo}`;
-
-				} else {
-
-					fragmentErrors = `${prgmInfo}`;
-
-				}
-				fragmentLog += fragmentErrors;
+				fragmentLog = `WARNING: ${programLog}`;
 
 			}
 

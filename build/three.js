@@ -18341,20 +18341,9 @@
 
 				} else {
 
-					var err = "Shader ERROR: " + (gl.getError());
-					var status = "Status: " + (gl.getProgramParameter( program, 35715 ));
-					var prgmInfo = "Program info:\r\n" + programLog + "\r\n" + vertexErrors + "\r\n" + fragmentErrors;
-
-					if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
-
-						fragmentErrors = fragmentErrors + "\r\n" + err + "\r\n" + status + "\r\n" + prgmInfo;
-
-					} else {
-
-						fragmentErrors = err + "\r\n" + status + "\r\n" + prgmInfo;
-
-					}
-					fragmentLog += fragmentErrors;
+					fragmentLog = "SHADER ERROR: " + (gl.getError()) + "\n\r";
+					fragmentLog += "VALIDATE STATUS: " + (gl.getProgramParameter( program, 35715 )) + "\n\r";
+					fragmentLog += "PROGRAM INFO LOG:\r\n" + programLog + "\n\r" + vertexErrors + "\n\r" + fragmentErrors;
 
 				}
 
@@ -18366,17 +18355,7 @@
 
 				} else {
 
-					var prgmInfo$1 = "WARNING: " + programLog;
-					if ( fragmentErrors !== null && fragmentErrors.length > 0 ) {
-
-						fragmentErrors = fragmentErrors + "\r\n" + prgmInfo$1;
-
-					} else {
-
-						fragmentErrors = "" + prgmInfo$1;
-
-					}
-					fragmentLog += fragmentErrors;
+					fragmentLog = "WARNING: " + programLog;
 
 				}
 
