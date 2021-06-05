@@ -18330,8 +18330,6 @@ function WebGLProgram( renderer, cacheKey, parameters ) {
 
 		} else if ( programLog !== '' ) {
 
-			fragmentLog = `WARNING: ${programLog}`;
-
 			if ( renderer.debug.consoleLogShaderErrors ) {
 
 				console.warn( 'WebGLProgram: gl.getProgramInfoLog()', programLog );
